@@ -1,0 +1,11 @@
+#Write a query that returns the following collumns:
+SELECT p.name as 'Pokemon Name', t.trainername as 'Trainer Name', pt.pokelevel as 'Level',
+       type1.name as 'Primary Type'
+       , t2.name as 'Secondary Type'
+FROM pokemon.pokemons p
+   join  pokemon.pokemon_trainer pt on p.id = pt.pokemon_id
+   join  pokemon.trainers t on pt.trainerID = t.trainerID
+   join   pokemon.types type1 on type1.id = p.primary_type
+left outer join pokemon.types t2 on t2.id = p.secondary_type;
+
+

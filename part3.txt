@@ -1,0 +1,45 @@
+#What is each pokemon's primary type?
+# Select p.name, t.NAME
+#from pokemon.types t
+# join pokemon.pokemons p on primary_type = t.id;
+
+#What is Rufflet's secondary type?
+#Select p.name, t.NAME
+#from pokemon.types t
+#join pokemon.pokemons p on primary_type = t.id
+#where p.name = 'Rufflet';
+
+#What are the names of the pokemon that belong to the trainer with trainerID 303?
+#select p.name
+#from pokemon.pokemon_trainer pt
+#join pokemon.pokemons p on p.id = pt.pokemon_id
+#join pokemon.trainers t on t.trainerID = pt.trainerID
+#where t.trainerID = 303;
+
+#How many pokemon have a secondary type Poison
+# Select count(p.name)
+# from pokemon.types t
+ # join pokemon.pokemons p on secondary_type = t.id
+# where t.name = 'Poison';
+
+#What are all the primary types and how many pokemon have that type?
+# Select t.name, count(p.name)
+# from pokemon.types t
+# join pokemon.pokemons p on secondary_type = t.id
+# group by  t.name
+
+#How many pokemon at level 100 does each trainer with at least one level 100 pokemone have? (Hint: your query should not display a trainer
+# select trainerID, count(*)
+#from pokemon.pokemon_trainer pt
+#where pt.pokelevel = 100
+# group by trainerID
+
+#How many pokemon only belong to one trainer and no other?
+#select count(*) from (
+#select count(1)
+#from pokemon.pokemon_trainer
+#group by pokemon_id
+#having count(trainerID) = 1) a;
+
+
+
